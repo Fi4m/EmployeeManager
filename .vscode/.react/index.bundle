@@ -108624,7 +108624,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _TextField2 = _interopRequireDefault(_TextField);
 
-    var _actions = _require(_dependencyMap[5], "../actions");
+    var _Button = _require(_dependencyMap[5], "./common/Button");
+
+    var _Button2 = _interopRequireDefault(_Button);
+
+    var _actions = _require(_dependencyMap[6], "../actions");
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -108697,7 +108701,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 29
+                                lineNumber: 30
                             }
                         },
                         this.props.error
@@ -108714,7 +108718,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         },
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 41
+                            lineNumber: 42
                         }
                     });
                 }
@@ -108728,7 +108732,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         },
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 44
+                            lineNumber: 45
                         }
                     },
                     "Log In"
@@ -108742,7 +108746,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 50
+                            lineNumber: 51
                         }
                     },
                     _react3.default.createElement(_TextField2.default, {
@@ -108752,7 +108756,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         value: this.props.email,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 51
+                            lineNumber: 52
                         }
                     }),
                     _react3.default.createElement(_TextField2.default, {
@@ -108763,23 +108767,17 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         secureTextEntry: true,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 57
+                            lineNumber: 58
                         }
                     }),
                     this.renderError(),
                     _react3.default.createElement(
-                        _reactNative.TouchableHighlight,
+                        _Button2.default,
                         {
-                            onPress: this.onLoginButtonPressed.bind(this),
-                            style: {
-                                margin: 10,
-                                borderColor: 'gray',
-                                borderWidth: 0.5,
-                                borderRadius: 5
-                            },
+                            onPressAction: this.onLoginButtonPressed.bind(this),
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 65
+                                lineNumber: 67
                             }
                         },
                         this.renderButton()
@@ -108810,7 +108808,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         passwordChanged: _actions.passwordChanged,
         loginUser: _actions.loginUser
     })(LoginForm);
-},765,[112,131,12,642,766,767],"src/components/LoginForm.js");
+},765,[112,131,12,642,766,778,767],"src/components/LoginForm.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
@@ -108975,7 +108973,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
-    exports.employeeEdit = exports.employeesFetch = exports.employeeCreate = exports.employeeUpdate = undefined;
+    exports.employeeDelete = exports.employeeEdit = exports.employeesFetch = exports.employeeCreate = exports.employeeUpdate = undefined;
 
     var _reactNativeRouterFlux = _require(_dependencyMap[0], "react-native-router-flux");
 
@@ -109054,6 +109052,18 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 dispatch({
                     type: _types.EMPLOYEE_EDIT
                 });
+            });
+        };
+    };
+
+    var employeeDelete = exports.employeeDelete = function employeeDelete(_ref4) {
+        var uid = _ref4.uid;
+        return function () {
+            var _firebase$auth4 = _firebase2.default.auth(),
+                currentUser = _firebase$auth4.currentUser;
+
+            _firebase2.default.database().ref("/users/" + currentUser.uid + "/employees/" + uid).remove().then(function () {
+                _reactNativeRouterFlux.Actions.pop();
             });
         };
     };
@@ -116414,6 +116424,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _EmployeeForm2 = _interopRequireDefault(_EmployeeForm);
 
+    var _Button = _require(_dependencyMap[6], "./common/Button");
+
+    var _Button2 = _interopRequireDefault(_Button);
+
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
     function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -116471,28 +116485,22 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 16
+                            lineNumber: 17
                         }
                     },
                     _react3.default.createElement(_EmployeeForm2.default, _extends({}, this.props, {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 18
+                            lineNumber: 19
                         }
                     })),
                     _react3.default.createElement(
-                        _reactNative.TouchableHighlight,
+                        _Button2.default,
                         {
-                            onPress: this.onCreateButtonPressed.bind(this),
-                            style: {
-                                margin: 10,
-                                borderColor: 'black',
-                                borderWidth: 0.5,
-                                borderRadius: 5
-                            },
+                            onPressAction: this.onCreateButtonPressed.bind(this),
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 20
+                                lineNumber: 21
                             }
                         },
                         _react3.default.createElement(
@@ -116504,7 +116512,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                 },
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 29
+                                    lineNumber: 22
                                 }
                             },
                             "Create"
@@ -116533,7 +116541,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         employeeUpdate: _actions.employeeUpdate,
         employeeCreate: _actions.employeeCreate
     })(EmployeeCreate);
-},772,[112,131,12,642,767,773],"src/components/EmployeeCreate.js");
+},772,[112,131,12,642,767,773,778],"src/components/EmployeeCreate.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
@@ -116873,6 +116881,20 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 (0, _reactNativeCommunications.text)(phone, "Your upcoming shift is on " + shift);
             }
         }, {
+            key: "onAccept",
+            value: function onAccept() {
+                this.props.employeeDelete({
+                    uid: this.props.employee.uid
+                });
+            }
+        }, {
+            key: "onDecline",
+            value: function onDecline() {
+                this.setState({
+                    showModal: false
+                });
+            }
+        }, {
             key: "render",
             value: function render() {
                 var _this3 = this;
@@ -116882,16 +116904,18 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 40
+                            lineNumber: 46
                         }
                     },
                     _react3.default.createElement(
                         _Confirm.Confirm,
                         {
                             visible: this.state.showModal,
+                            onAccept: this.onAccept.bind(this),
+                            onDecline: this.onDecline.bind(this),
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 42
+                                lineNumber: 48
                             }
                         },
                         "Are you sure you want to delete this?"
@@ -116899,7 +116923,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     _react3.default.createElement(_EmployeeForm2.default, _extends({}, this.props.employee, {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 48
+                            lineNumber: 56
                         }
                     })),
                     _react3.default.createElement(
@@ -116914,7 +116938,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 50
+                                lineNumber: 58
                             }
                         },
                         _react3.default.createElement(
@@ -116926,7 +116950,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                 },
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 59
+                                    lineNumber: 67
                                 }
                             },
                             "Edit"
@@ -116944,7 +116968,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 62
+                                lineNumber: 70
                             }
                         },
                         _react3.default.createElement(
@@ -116956,7 +116980,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                 },
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 71
+                                    lineNumber: 79
                                 }
                             },
                             "Text"
@@ -116967,7 +116991,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         {
                             onPress: function onPress() {
                                 return _this3.setState({
-                                    showModal: !_this3.state.showModal
+                                    showModal: true
                                 });
                             },
                             style: {
@@ -116978,7 +117002,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 74
+                                lineNumber: 82
                             }
                         },
                         _react3.default.createElement(
@@ -116990,7 +117014,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                 },
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 83
+                                    lineNumber: 91
                                 }
                             },
                             "Fire"
@@ -117017,7 +117041,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     exports.default = (0, _reactRedux.connect)(mapStateToProps, {
         employeeUpdate: _actions.employeeUpdate,
-        employeeEdit: _actions.employeeEdit
+        employeeEdit: _actions.employeeEdit,
+        employeeDelete: _actions.employeeDelete
     })(EmployeeEdit);
 },774,[112,131,12,642,771,775,767,773,776],"src/components/EmployeeEdit.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
@@ -117257,6 +117282,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _reactNative = _require(_dependencyMap[1], "react-native");
 
+    var _Button = _require(_dependencyMap[2], "./Button");
+
+    var _Button2 = _interopRequireDefault(_Button);
+
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
     var Confirm = function Confirm(_ref) {
@@ -117273,7 +117302,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 transparent: true,
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 6
+                    lineNumber: 7
                 }
             },
             _react2.default.createElement(
@@ -117287,7 +117316,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     },
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 12
+                        lineNumber: 13
                     }
                 },
                 _react2.default.createElement(
@@ -117295,11 +117324,12 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                         style: {
                             backgroundColor: 'white',
-                            width: '90%'
+                            width: '90%',
+                            borderRadius: 5
                         },
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 21
+                            lineNumber: 22
                         }
                     },
                     _react2.default.createElement(
@@ -117311,7 +117341,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 23
+                                lineNumber: 24
                             }
                         },
                         children
@@ -117324,13 +117354,13 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 25
+                                lineNumber: 26
                             }
                         },
                         _react2.default.createElement(
-                            _reactNative.TouchableHighlight,
+                            _Button2.default,
                             {
-                                onPress: function onPress() {},
+                                onPressAction: onAccept,
                                 style: {
                                     margin: 10,
                                     borderColor: 'black',
@@ -117340,7 +117370,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                 },
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 27
+                                    lineNumber: 28
                                 }
                             },
                             _react2.default.createElement(
@@ -117352,16 +117382,16 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     },
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 37
+                                        lineNumber: 38
                                     }
                                 },
                                 "Yes"
                             )
                         ),
                         _react2.default.createElement(
-                            _reactNative.TouchableHighlight,
+                            _Button2.default,
                             {
-                                onPress: function onPress() {},
+                                onPressAction: onDecline,
                                 style: {
                                     margin: 10,
                                     borderColor: 'black',
@@ -117371,7 +117401,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                 },
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 40
+                                    lineNumber: 41
                                 }
                             },
                             _react2.default.createElement(
@@ -117383,7 +117413,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     },
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 50
+                                        lineNumber: 51
                                     }
                                 },
                                 "No"
@@ -117396,6 +117426,45 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     };
 
     exports.Confirm = Confirm;
-},776,[112,12],"src/components/common/Confirm.js");
+},776,[112,12,778],"src/components/common/Confirm.js");
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    var _jsxFileName = "/Users/vedant/Workspace/manager/src/components/common/Button.js";
+
+    var _react = _require(_dependencyMap[0], "react");
+
+    var _react2 = _interopRequireDefault(_react);
+
+    var _reactNative = _require(_dependencyMap[1], "react-native");
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    var Button = function Button(_ref) {
+        var children = _ref.children,
+            onPressAction = _ref.onPressAction,
+            style = _ref.style;
+        return _react2.default.createElement(
+            _reactNative.TouchableOpacity,
+            {
+                onPress: onPressAction,
+                style: [{
+                    margin: 10,
+                    borderColor: 'gray',
+                    borderWidth: 0.5,
+                    borderRadius: 5
+                }, style],
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 6
+                }
+            },
+            children
+        );
+    };
+
+    exports.default = Button;
+},778,[112,12],"src/components/common/Button.js");
 require(23);
 require(11);//# sourceMappingURL=index.map

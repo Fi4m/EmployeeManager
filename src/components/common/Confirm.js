@@ -1,5 +1,6 @@
 import React from 'react'
-import { View, Text, Modal, TouchableHighlight } from 'react-native'
+import { View, Text, Modal } from 'react-native'
+import Button from './Button'
 
 const Confirm = ({ visible, children, onAccept, onDecline }) => {
     return (
@@ -23,9 +24,9 @@ const Confirm = ({ visible, children, onAccept, onDecline }) => {
                     <Text style={{ textAlign: 'center', padding: 10 }}>{children}</Text>
 
                     <View style={{ flexDirection: 'row' }}>
-
-                        <TouchableHighlight
-                            onPress={onAccept}
+                    
+                        <Button
+                            onPressAction={onAccept}
                             style={{
                                 margin: 10, 
                                 borderColor: 'black',
@@ -34,11 +35,11 @@ const Confirm = ({ visible, children, onAccept, onDecline }) => {
                                 flex: 1
                             }}
                         >
-                            <Text style={{ textAlign: 'center', padding: 10 }} >Yes</Text> 
-                        </TouchableHighlight>
+                            <Text style={{ textAlign: 'center', padding: 10 }} >Yes</Text>
+                        </Button>
 
-                        <TouchableHighlight
-                            onPress={onDecline}
+                        <Button 
+                            onPressAction={onDecline}
                             style={{
                                 margin: 10, 
                                 borderColor: 'black',
@@ -47,8 +48,8 @@ const Confirm = ({ visible, children, onAccept, onDecline }) => {
                                 flex: 1
                             }}
                         >
-                            <Text style={{ textAlign: 'center', padding: 10 }} >No</Text> 
-                        </TouchableHighlight>
+                            <Text style={{ textAlign: 'center', padding: 10 }} >No</Text>
+                        </Button>
                     </View>
                 </View>
 

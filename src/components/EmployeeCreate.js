@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { View, TouchableHighlight, Text } from 'react-native'
+import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { employeeUpdate, employeeCreate } from '../actions'
 import EmployeeForm from './EmployeeForm'
+import Button from './common/Button'
 
 class EmployeeCreate extends Component {
 
@@ -17,17 +18,12 @@ class EmployeeCreate extends Component {
                 
                 <EmployeeForm {...this.props} />
 
-                <TouchableHighlight
-                    onPress={this.onCreateButtonPressed.bind(this)}
-                    style={{
-                        margin: 10, 
-                        borderColor: 'black',
-                        borderWidth: 0.5,
-                        borderRadius: 5
-                    }}
-                >
-                    <Text style={{ textAlign: 'center', padding: 10 }} >Create</Text> 
-                </TouchableHighlight>
+                <Button onPressAction={this.onCreateButtonPressed.bind(this)}>
+                    <Text style={{ textAlign: 'center', padding: 10 }} >
+                        Create
+                    </Text> 
+                </Button>
+
             </View>
         )
     }

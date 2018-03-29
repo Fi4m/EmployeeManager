@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { View, TouchableHighlight, Text, ActivityIndicator } from 'react-native'
+import { View, Text, ActivityIndicator } from 'react-native'
 import { connect } from 'react-redux'
 import TextField from './common/TextField'
+import Button from './common/Button'
 import {
     emailChanged,
     passwordChanged,
@@ -62,18 +63,11 @@ class LoginForm extends Component {
                     secureTextEntry
                 />
                 {this.renderError()}
-                <TouchableHighlight
-                        // onPress={event => this.props.navigation.navigate('Logout')}
-                    onPress={this.onLoginButtonPressed.bind(this)}
-                    style={{
-                        margin: 10, 
-                        borderColor: 'gray',
-                        borderWidth: 0.5,
-                        borderRadius: 5
-                    }}
-                >
-                {this.renderButton()}
-                </TouchableHighlight>
+
+                <Button onPressAction={this.onLoginButtonPressed.bind(this)} >
+                    {this.renderButton()}
+                </Button>
+                
             </View>
         )
     }

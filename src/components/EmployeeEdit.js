@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { View, TouchableHighlight, Text } from 'react-native'
+import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 import { text } from 'react-native-communications'
 import { employeeUpdate, employeeEdit, employeeDelete } from '../actions'
 import EmployeeForm from './EmployeeForm'
 import { Confirm } from './common/Confirm'
+import Button from './common/Button'
 
 class EmployeeEdit extends Component {
 
@@ -55,41 +56,24 @@ class EmployeeEdit extends Component {
                 
                 <EmployeeForm {...this.props.employee} />
 
-                <TouchableHighlight
-                    onPress={this.onEditButtonPressed.bind(this)}
-                    style={{
-                        margin: 10, 
-                        borderColor: 'black',
-                        borderWidth: 0.5,
-                        borderRadius: 5
-                    }}
+                <Button
+                    onPressAction={this.onEditButtonPressed.bind(this)}
                 >
-                    <Text style={{ textAlign: 'center', padding: 10 }} >Edit</Text> 
-                </TouchableHighlight>
+                    <Text style={{ textAlign: 'center', padding: 10 }} >Edit</Text>
+                </Button>
 
-                <TouchableHighlight
-                    onPress={this.onTextButtonPressed.bind(this)}
-                    style={{
-                        margin: 10, 
-                        borderColor: 'black',
-                        borderWidth: 0.5,
-                        borderRadius: 5
-                    }}
+                <Button
+                    onPressAction={this.onTextButtonPressed.bind(this)}
                 >
-                    <Text style={{ textAlign: 'center', padding: 10 }} >Text</Text> 
-                </TouchableHighlight>
-
-                <TouchableHighlight
-                    onPress={() => this.setState({ showModal: true })}
-                    style={{
-                        margin: 10, 
-                        borderColor: 'black',
-                        borderWidth: 0.5,
-                        borderRadius: 5
-                    }}
+                    <Text style={{ textAlign: 'center', padding: 10 }} >Text</Text>
+                </Button>
+                
+                <Button
+                    onPressAction={() => this.setState({ showModal: true })}
                 >
-                    <Text style={{ textAlign: 'center', padding: 10 }} >Fire</Text> 
-                </TouchableHighlight>
+                    <Text style={{ textAlign: 'center', padding: 10 }} >Fire</Text>
+                </Button>
+                
             </View>
         )
     }
